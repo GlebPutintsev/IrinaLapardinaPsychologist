@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психолог-консультант в Москве</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ОБЩИЕ СТИЛИ --- */
+        :root {
+            --primary-color: #2c3e50; /* Глубокий синий */
+            --secondary-color: #34495e; /* Более светлый синий */
+            --accent-color: #d4af7a; /* Золотисто-бежевый */
+            --light-bg: #f4f4f4;
+            --text-color: #333;
+            --white-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.7;
+            background-color: var(--white-color);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- ШАПКА И НАВИГАЦИЯ --- */
+        .header {
+            background: var(--white-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+        #hero {
+            background: var(--light-bg);
+            padding-top: 150px;
+            padding-bottom: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex-basis: 350px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            border: 8px solid var(--white-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: #c59d68;
+            transform: translateY(-3px);
+        }
+
+        /* --- СЕКЦИЯ "МОЙ ПОДХОД" --- */
+        #approach {
+            background: var(--white-color);
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .approach-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .approach-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(44, 62, 80, 0.1);
+        }
+
+        .approach-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        /* --- СЕКЦИЯ "ОПЫТ" --- */
+        #experience {
+            background: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        #experience h2 {
+            color: var(--white-color);
+        }
+        
+        .experience-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .experience-content .highlight {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .experience-list {
+            list-style-type: none;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .experience-list li {
+            background: var(--secondary-color);
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* --- СЕКЦИЯ "С ЧЕМ Я РАБОТАЮ" --- */
+        #issues {
+            background: var(--light-bg);
+        }
+
+        .issues-columns {
+            columns: 2;
+            column-gap: 40px;
+        }
+
+        .issues-columns ul {
+            list-style-type: none;
+        }
+
+        .issues-columns li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .issues-columns li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- СЕКЦИЯ "УСЛУГИ И ЦЕНЫ" --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .price-card {
+            background: var(--white-color);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(44, 62, 80, 0.1);
+        }
+
+        .price-card h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .price-card .duration {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .price-card .price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .price-card .price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .discounts {
+            margin-top: 40px;
+            text-align: center;
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .discounts h3 {
+            margin-bottom: 10px;
+        }
+
+        /* --- СЕКЦИЯ "МЕТОДЫ РАБОТЫ" --- */
+        #methods {
+            background: var(--light-bg);
+        }
+        
+        .methods-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .tag {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* --- СЕКЦИЯ "КОНТАКТЫ" --- */
+        #contact {
+            background: var(--white-color);
+        }
+        
+        .contact-wrapper {
+            display: flex;
+            gap: 50px;
+            background: var(--light-bg);
+            padding: 50px;
+            border-radius: 10px;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- ПОДВАЛ (FOOTER) --- */
+        .footer {
+            background: var(--primary-color);
+            color: #ccc;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px; /* Высота шапки */
+                flex-direction: column;
+                background-color: var(--white-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 20px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+
+            .issues-columns {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#hero" class="nav-logo">Психолог в Москве</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#approach" class="nav-link">Мой подход</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Опыт</a></li>
+                <li class="nav-item"><a href="#issues" class="nav-link">С чем я работаю</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Услуги</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Ирина Лапардина</h1>
+                    <p class="subtitle">Психолог-консультант, психолог-онлайн. <br>Помощь в поиске внутренних опор и гармонии.</p>
+                    <a href="#contact" class="btn">Записаться на консультацию</a>
+                </div>
+                <div class="hero-image fade-in">
+                    <!-- Ссылка на ваше фото. Я использовал фото из запроса. -->
+                    <img src="/Users/glebputincev/Documents/telegram/photo_irina.jpg" alt="Фото психолога">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МОЙ ПОДХОД -->
+    <section id="approach">
+        <div class="container">
+            <h2 class="fade-in">Мой подход к работе</h2>
+            <div class="approach-grid">
+                <div class="approach-card fade-in">
+                    <h3>Задача</h3>
+                    <p>Показать клиенту все лучшее что в нём есть, раскрыть сильные стороны и проработать слабые.</p>
+                </div>
+                <div class="approach-card fade-in">
+                    <h3>Цель</h3>
+                    <p>Сопровождение клиента до лучших изменений в жизни, обретения уверенности и внутреннего спокойствия.</p>
+                </div>
+                <div class="approach-card fade-in">
+                    <h3>Вера</h3>
+                    <p>В Бога, и в безграничную силу каждого человека, его способность к росту и самоисцелению.</p>
+                </div>
+                 <div class="approach-card fade-in">
+                    <h3>Клиенты</h3>
+                    <p>Мои клиенты — всегда прекрасны и настолько сильны, что справляются с любыми испытаниями.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОПЫТ РАБОТЫ -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="fade-in">Профессиональный опыт</h2>
+            <div class="experience-content fade-in">
+                <span class="highlight">35 лет общего стажа</span>
+                <p>Работа в различных сферах, связанных напрямую или косвенно с психологическим состоянием лиц, находящихся в сложной жизненной ситуации.</p>
+                <ul class="experience-list">
+                    <li>Опыт помощи лицам, находящимся в кризисной, острой стрессовой ситуации.</li>
+                    <li>Работа с военнослужащими и их близкими, проходившими службу в "горячих точках".</li>
+                    <li>Опыт работы с лицами, пострадавшими в результате тяжких и особо тяжких преступлений.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- С ЧЕМ Я РАБОТАЮ -->
+    <section id="issues">
+        <div class="container">
+            <h2 class="fade-in">Обращайтесь, если у вас:</h2>
+            <div class="issues-columns fade-in">
+                <ul>
+                    <li>Низкая самооценка, связанная с детско-родительскими отношениями.</li>
+                    <li>Проблемы конфликтов в семье, на работе, с партнерами.</li>
+                    <li>Отсутствие навыка взаимодействия и трудности в выражении чувств.</li>
+                    <li>Страх заявить о себе и быть самим собой.</li>
+                    <li>Эмоциональная холодность в отношениях с близкими.</li>
+                    <li>Самокритичность и неспособность себя презентовать.</li>
+                    <li>Излишняя эмоциональность, мешающая взаимоотношениям.</li>
+                    <li>Последствия перенесенного кризиса, шока, острой травмы, работа с ПТСР.</li>
+                    <li>Семейные проблемы (развод, измена, ревность, отношения с детьми).</li>
+                    <li>Проблемы, связанные с участием в военных событиях, ликвидациях последствий катастроф.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- УСЛУГИ И ЦЕНЫ -->
+    <section id="services">
+        <div class="container">
+            <h2 class="fade-in">Услуги и стоимость</h2>
+            <div class="pricing-grid">
+                <div class="price-card fade-in">
+                    <h3>Индивидуальная терапия</h3>
+                    <p class="duration">(15:00-22:00)</p>
+                    <div class="price">3500 <span>руб/час</span></div>
+                    <a href="#contact" class="btn">Записаться</a>
+                </div>
+                <div class="price-card fade-in">
+                    <h3>Индивидуальная терапия</h3>
+                    <p class="duration">Ночное время (после 22:00)</p>
+                    <div class="price">5000 <span>руб/час</span></div>
+                    <a href="#contact" class="btn">Записаться</a>
+                </div>
+                <div class="price-card fade-in">
+                    <h3>Групповая терапия</h3>
+                    <p class="duration">По расписанию</p>
+                    <div class="price">2000 <span>руб/встреча</span></div>
+                    <a href="#contact" class="btn">Узнать расписание</a>
+                </div>
+            </div>
+            <div class="discounts fade-in">
+                <h3>Система скидок</h3>
+                <p>Предоставляются скидки студентам, молодым семьям, участникам боевых действий, православным.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- МЕТОДЫ РАБОТЫ -->
+    <section id="methods">
+        <div class="container">
+            <h2 class="fade-in">Направления и методы работы</h2>
+            <div class="methods-tags fade-in">
+                <span class="tag">Семейная психология</span>
+                <span class="tag">Конфликтология</span>
+                <span class="tag">Психологическое консультирование</span>
+                <span class="tag">Социальная реабилитация</span>
+                <span class="tag">Когнитивная психология</span>
+                <span class="tag">ДПДГ (EMDR)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="fade-in">Запись на консультацию</h2>
+            <div class="contact-wrapper fade-in">
+                <div class="contact-info">
+                    <h3>Свяжитесь со мной</h3>
+                    <p>Вы можете записаться на консультацию, заполнив форму, или связаться со мной напрямую.</p>
+                    <p><strong>Город:</strong> г. Москва (очно и онлайн)</p>
+                    <p><strong>Телефон / WhatsApp / Telegram:</strong> <a href="tel:+79257664570">+7 (925) 766-45-70</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:vash.psiholog@email.com">vash.psiholog@email.com</a></p>
+                    <p>Конфиденциальность гарантируется.</p>
+                </div>
+                <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Ваше имя</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-method">Телефон или Email</label>
+                                <input type="text" id="contact-method" name="contact-method" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Кратко опишите ваш запрос (необязательно)</label>
+                                <textarea id="message" name="message"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Отправить заявку</button>
+                        </form>
+                        <div id="form-status" style="margin-top: 15px; font-weight: bold;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Ирина Лапардина, психолог-консультант. Все права защищены.</p>
+            <p>Сайт является визиткой и не является публичной офертой. Консультация психолога не является медицинской услугой.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            threshold: 0.2, 
+            rootMargin: "0px 0px -50px 0px" 
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+        document.getElementById('contactForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const statusDiv = document.getElementById('form-status');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        const formData = {
+            name: document.getElementById('name').value,
+            contact_method: document.getElementById('contact-method').value,
+            message: document.getElementById('message').value
+        };
+
+        statusDiv.textContent = 'Отправка...';
+        statusDiv.style.color = '#333';
+        submitButton.disabled = true;
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                statusDiv.textContent = '✅ ' + result.message;
+                statusDiv.style.color = 'green';
+                form.reset();
+            } else {
+                const error = await response.json();
+                statusDiv.textContent = '❌ Ошибка: ' + (error.detail || 'Не удалось отправить.');
+                statusDiv.style.color = 'red';
+            }
+        } catch (error) {
+            // Обработка ошибок сети (например, если бэкенд не запущен)
+            console.error('Ошибка сети:', error);
+            statusDiv.textContent = '❌ Ошибка сети. Не удалось связаться с сервером.';
+            statusDiv.style.color = 'red';
+        } finally {
+            // В любом случае снова включаем кнопку
+            submitButton.disabled = false;
+        }
+    });
+    </script>
+
+</body>
+</html>
